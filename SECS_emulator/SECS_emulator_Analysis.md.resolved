@@ -1,0 +1,59 @@
+# SECS_Test 程式功能與架構筆記
+
+## 📌 程式總結概述
+**SECS_Test** 是一個以 C# 開發的半導體設備通訊標準（SECS/GEM - HSMS）測試工具。
+此程式目前主要的目的是透過 TCP/IP Socket 建立與機台設備 (Equipment) 之間的網路通訊，並且能夠進行最基礎的 SECS 訊息發送與接收解析。整體專案的通訊骨架已經成形，但部分進階的編碼/解碼模組以及資料封裝處理目前仍處於空殼或規劃開發中的階段。
+
+---
+
+## 📂 主要程式檔案分析
+
+### 1. [Program.cs](file:///c:/TEST/SECS_Test/SECS_Test/Program.cs) - 執行進入點
+- **功能定位**：負責啟動程式、設定連線環境、建立主通訊實體。
+- **作用流程**：
+  - 宣告設備測試端點：IP 是 `127.0.0.1`，Port 為 `5000`，Device ID 為 `0`。
+  - 實例化最重要的核心物件 [SECSClient](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#23-30)。
+  - 對外發起兩種模式的連線嘗試：
+    - [Connect()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#32-48): 主動連線至設備 IP 與 Port，發送一個測試訊號。
+    - [Connect_R()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#49-75): 在本地端綁定通訊埠被動聆聽，以接收對接裝置的回應連線。
+  - 呼叫 `Console.ReadLine()` 來阻塞主執行緒，維持程式在背景運行而不中斷。
+
+### 2. [SECS_Client.cs](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs) - 核心通訊客戶端
+- **功能定位**：負責實作 TCP Socket 的底層連線、傳送基本封包，以及接收並拆解基礎的 SECS (HSMS 協定) 封包格式。
+- **作用流程與函式**：
+  - **[Connect()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#32-48)**: 以 `AddressFamily.InterNetwork` 與 `SocketType.Stream` 主動跟伺服器建立 TCP 通道，成功後印出訊息並呼叫 [SendMessage()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#78-109)。
+  - **[Connect_R()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#49-75)**: 原地開放綁定，開啟 [Listen(1)](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#110-146) 接收外部連線請求。接到後另開一個 Thread (背景執行緒) 使用 [ListenForMessages()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#110-146) 來對其做不間斷資料監聽。
+  - **[SendMessage()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#78-109)**: 現階段寫死發送 `"NUL"` 的 UTF8 字節陣列當作測試訊號（但裡面保留了註解，其實已經規劃好如何包裝 14 Bytes 的 Select.req HSMS 標頭，包括 Session ID, Header, Stream 1, Function 1 等細節）。
+  - **[ListenForMessages(Socket socket)](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#110-146)**: 利用無限迴圈 `while(true)` 掛接在連線上，若設備有資料回傳，會透過 `socket.Receive()` 拿取資料並傳入 [ParseData()](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#147-174) 展開解析。
+  - **[ParseData(byte[] data, int length)](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#147-174)**: 實作了 **HSMS 通訊協議的標頭解碼機制**：
+    1. 前 4 Bytes 使用大端序 (Big-Endian) 解開得知整體 Message Length。
+    2. 下 2 Bytes 取出 `Session ID`。
+    3. 把 Header 的位元依照 SECS-II 規定，藉由位元運算抽出 `Stream`、`Function` 以及是否需要等候回覆的 `W-bit`。
+    4. 最後將第 14 Byte 之後的所有資料切片當作 Body 提取保存，計算出 Body 長度。
+
+---
+
+## 🛠 擴展與資料目錄模組 (開發與預留階段)
+
+專案結構中被分出三個資料夾 (`Coding`, `Connection`, [Data](file:///c:/TEST/SECS_Test/SECS_Test/Data/S_Data.cs#9-12)) 作為軟體架構擴充之用，目前大部分仍在架構規劃或底層刻劃：
+
+### 1. `Coding` 目錄 (封裝與解碼器)
+專門負責處理把 C# 物件封裝成 SECS Message 二進制內容，或將其解碼還原的模組。
+- **[ByteBuffer.cs](file:///c:/TEST/SECS_Test/SECS_Test/Coding/ByteBuffer.cs)**：已經實作完畢的底層工具。封裝了 `MemoryStream` 及 `BinaryReader/Writer`，提供便利的指標位移 (Offset) 操作函數，以及設計好可以用來切換大端序(BE)與小端序(LE)的支援框架，非常適合用來組合自定義封包。
+- **[Encoder.cs](file:///c:/TEST/SECS_Test/SECS_Test/Coding/Encoder.cs) / [Decoder.cs](file:///c:/TEST/SECS_Test/SECS_Test/Coding/Decoder.cs)**：編瑪與解碼程式的類別空殼，宣告了標頭長度（`Head_Len = 10`）跟將物件轉為陣列的 [Encoder(object msg)](file:///c:/TEST/SECS_Test/SECS_Test/Coding/Encoder.cs#10-17) 方法簽名，詳細內容待實作。
+
+### 2. `Connection` 目錄 (連線衍生與架構化)
+- **[Connect.cs](file:///c:/TEST/SECS_Test/SECS_Test/Connection/Connect.cs)**：另一個曾經實作使用 `TcpClient` 代替 `Socket` 來發送/接收訊息的歷史程式碼紀錄（裡面多數被註解掉）。
+- **[SECS_Port.cs](file:///c:/TEST/SECS_Test/SECS_Test/Connection/SECS_Port.cs)**：一個空類別，規劃用來封裝與保存不同機台 IP、Port、ID 的資料結構。
+
+### 3. [Data](file:///c:/TEST/SECS_Test/SECS_Test/Data/S_Data.cs#9-12) 目錄 (標準資料項目定義)
+- **[S_Data.cs](file:///c:/TEST/SECS_Test/SECS_Test/Data/S_Data.cs)**：宣告了強型別的指代與管理，建立了一個名為 `DataType` 的列舉 (Enum)。此列舉完整的把半導體 SECS-II 規範內定義好的資料格式對應數值抄錄進來，例如：`LIST = 0`、`BINARY = 8`、`ASCII = 16`、帶號整數 (`I1 = 25`, `I4 = 28`)、浮點數 (`F4 = 36`) 等等。未來解析出 SECS Body 時就會透由這個列舉來決定如何轉換 Byte 陣列為人類可讀的值。
+
+---
+
+## 📝 綜合評價與接下來的開發方向
+目前的 SECS_Test.csproj 以經掌握了跟 SECS/GEM 設備建立第一步接觸的關鍵：**成功搭建 TCP 通訊並能看懂收到的標頭 (Header) 是哪種 SxFy (Stream & Function)**。這是一套很好的初期雛型。
+
+若要繼續完善此程式，後續需要重點擴充：
+1. 將 [SECS_Client.cs](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs) 註解中的 HSMS Select.req（選擇請求）完善，並建立正確的連線交握 (Handshake) 流程。
+2. 將 [ParseData](file:///c:/TEST/SECS_Test/SECS_Test/SECS_Client.cs#147-174) 裡所拆卸出來的 Body Bytes 透由 [Coding/Decoder.cs](file:///c:/TEST/SECS_Test/SECS_Test/Coding/Decoder.cs) 並搭配 [Data/S_Data.cs](file:///c:/TEST/SECS_Test/SECS_Test/Data/S_Data.cs) 實作出巢狀解析 (Parsing nested List & Items)，讓程式真正可以印出機台回傳的數值與資料結構。

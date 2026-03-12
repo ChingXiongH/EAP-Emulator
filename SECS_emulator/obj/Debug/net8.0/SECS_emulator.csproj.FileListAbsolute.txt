@@ -1,0 +1,14 @@
+C:\TEST\SECS_emulator\SECS_emulator\bin\Debug\net8.0\SECS_emulator.exe
+C:\TEST\SECS_emulator\SECS_emulator\bin\Debug\net8.0\SECS_emulator.deps.json
+C:\TEST\SECS_emulator\SECS_emulator\bin\Debug\net8.0\SECS_emulator.runtimeconfig.json
+C:\TEST\SECS_emulator\SECS_emulator\bin\Debug\net8.0\SECS_emulator.dll
+C:\TEST\SECS_emulator\SECS_emulator\bin\Debug\net8.0\SECS_emulator.pdb
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.AssemblyInfoInputs.cache
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.AssemblyInfo.cs
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.csproj.CoreCompileInputs.cache
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.dll
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\refint\SECS_emulator.dll
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.pdb
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.genruntimeconfig.cache
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\ref\SECS_emulator.dll

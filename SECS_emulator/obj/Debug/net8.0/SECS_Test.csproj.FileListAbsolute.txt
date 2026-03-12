@@ -1,0 +1,14 @@
+C:\TEST\SECS_Test\SECS_Test\bin\Debug\net8.0\SECS_Test.exe
+C:\TEST\SECS_Test\SECS_Test\bin\Debug\net8.0\SECS_Test.deps.json
+C:\TEST\SECS_Test\SECS_Test\bin\Debug\net8.0\SECS_Test.runtimeconfig.json
+C:\TEST\SECS_Test\SECS_Test\bin\Debug\net8.0\SECS_Test.dll
+C:\TEST\SECS_Test\SECS_Test\bin\Debug\net8.0\SECS_Test.pdb
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.AssemblyInfoInputs.cache
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.AssemblyInfo.cs
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.csproj.CoreCompileInputs.cache
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.dll
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\refint\SECS_Test.dll
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.pdb
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\SECS_Test.genruntimeconfig.cache
+C:\TEST\SECS_Test\SECS_Test\obj\Debug\net8.0\ref\SECS_Test.dll
