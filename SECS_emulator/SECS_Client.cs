@@ -355,25 +355,26 @@ namespace SECS_emulator
         public void ReciveS1F13W(SECSMessage msg)
         {
             Console.WriteLine("[HSMS] → Reply S1F14");
-            var sendS1F14 = new SECSMessage
-            {
-                Stream = msg.Stream,
-                Function = 14,
-                SessionId = _port.DeviceID,
-                SType = MessageType.DataMessage,
-                SystemBytes = msg.SystemBytes,
-                Body = null   // S1F14: Establish Communications Acknowledge (空回覆)
-            };
-            var HACK = new SECSItem(DataType.BINARY, new byte[] { 0X00 });
-            var timeList = new SECSItem(DataType.LIST, new List<SECSItem>());
+            // var sendS1F14 = new SECSMessage
+            // {
+            //     Stream = msg.Stream,
+            //     Function = 14,
+            //     SessionId = _port.DeviceID,
+            //     SType = MessageType.DataMessage,
+            //     SystemBytes = msg.SystemBytes,
+            //     Body = null   // S1F14: Establish Communications Acknowledge (空回覆)
+            // };
+            // var HACK = new SECSItem(DataType.BINARY, new byte[] { 0X00 });
+            // var timeList = new SECSItem(DataType.LIST, new List<SECSItem>());
 
-            sendS1F14.Body = new SECSItem(DataType.LIST, new List<SECSItem>
-            {
-                HACK,
-                timeList
-            });
+            // sendS1F14.Body = new SECSItem(DataType.LIST, new List<SECSItem>
+            // {
+            //     HACK,
+            //     timeList
+            // });
 
-
+            StreamFunctionBase streamFunctionBase = new StreamFunctionBase();
+            SECSMessage sendS1F14 = streamFunctionBase.Create_S1F14(msg, msg.SystemBytes);
 
             byte[] packet = Encoder.Encode(sendS1F14);
             _socket.Send(packet);

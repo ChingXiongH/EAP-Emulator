@@ -12,3 +12,4 @@ C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\refint\SECS_emulator.dll
 C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.pdb
 C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.genruntimeconfig.cache
 C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\ref\SECS_emulator.dll
+C:\TEST\SECS_emulator\SECS_emulator\obj\Debug\net8.0\SECS_emulator.sourcelink.json

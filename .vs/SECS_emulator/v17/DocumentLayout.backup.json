@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\TEST\\SECS_emulator\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|c:\\test\\secs_emulator\\secs_emulator\\data\\streamfunctionbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|solutionrelative:secs_emulator\\data\\streamfunctionbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|c:\\test\\secs_emulator\\secs_emulator\\data\\s_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|solutionrelative:secs_emulator\\data\\s_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|c:\\test\\secs_emulator\\secs_emulator\\secs_client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|solutionrelative:secs_emulator\\secs_client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|c:\\test\\secs_emulator\\secs_emulator\\coding\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|solutionrelative:secs_emulator\\coding\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|c:\\test\\secs_emulator\\secs_emulator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3D61143-E524-4509-8498-57C0174C06D0}|SECS_emulator\\SECS_emulator.csproj|solutionrelative:secs_emulator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,15 +102,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "S_Data.cs",
+              "DocumentMoniker": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Data\\S_Data.cs",
+              "RelativeDocumentMoniker": "SECS_emulator\\Data\\S_Data.cs",
+              "ToolTip": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Data\\S_Data.cs",
+              "RelativeToolTip": "SECS_emulator\\Data\\S_Data.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAASwEEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T02:13:14.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "StreamFunctionBase.cs",
+              "DocumentMoniker": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Data\\StreamFunctionBase.cs",
+              "RelativeDocumentMoniker": "SECS_emulator\\Data\\StreamFunctionBase.cs",
+              "ToolTip": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Data\\StreamFunctionBase.cs",
+              "RelativeToolTip": "SECS_emulator\\Data\\StreamFunctionBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBsAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T01:59:15.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "SECS_Client.cs",
               "DocumentMoniker": "C:\\TEST\\SECS_emulator\\SECS_emulator\\SECS_Client.cs",
               "RelativeDocumentMoniker": "SECS_emulator\\SECS_Client.cs",
               "ToolTip": "C:\\TEST\\SECS_emulator\\SECS_emulator\\SECS_Client.cs",
               "RelativeToolTip": "SECS_emulator\\SECS_Client.cs",
-              "ViewState": "AgIAAF4BAAAAAAAAAAAAwHoBAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAEMBAAAAAAAAAAAowAwBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-12T09:03:31.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Program.cs",
+              "RelativeDocumentMoniker": "SECS_emulator\\Program.cs",
+              "ToolTip": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Program.cs",
+              "RelativeToolTip": "SECS_emulator\\Program.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T08:47:50.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Decoder.cs",
+              "DocumentMoniker": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Coding\\Decoder.cs",
+              "RelativeDocumentMoniker": "SECS_emulator\\Coding\\Decoder.cs",
+              "ToolTip": "C:\\TEST\\SECS_emulator\\SECS_emulator\\Coding\\Decoder.cs",
+              "RelativeToolTip": "SECS_emulator\\Coding\\Decoder.cs",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAwKoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T06:08:42.608Z",
               "EditorCaption": ""
             }
           ]

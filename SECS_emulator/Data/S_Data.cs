@@ -29,6 +29,27 @@ namespace SECS_emulator.Data
         public MessageType SType { get; set; } = MessageType.DataMessage;
         public uint SystemBytes { get; set; }
         public SECSItem Body { get; set; }
+
+        public void New(SECSMessage msg)
+        {
+            SessionId = msg.SessionId;
+            SType = MessageType.DataMessage;
+            SystemBytes = msg.SystemBytes;
+        }
+        public void SetSFW(Int32 s, Int32 f, Int32 w)
+        {
+            try
+            {
+                Stream = (byte)s;
+                Function = (byte)f;
+                WBit = w != 0 ? true : false;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine($"[ERROR] SetSFW: {ex.Message}");
+            }
+
+        }
     }
 
     public class SECSItem

@@ -175,10 +175,11 @@ namespace SECS_emulator.Coding
             string pad = new string(' ', indent * 2);
             if (item.Format == DataType.LIST)
             {
-                Console.WriteLine($"{pad}<L [{item.Items?.Count ?? 0}]>");
+                Console.WriteLine($"{pad}<L [{item.Items?.Count ?? 0}]");
                 if (item.Items != null)
                     foreach (var child in item.Items)
                         PrintItem(child, indent + 1);
+                Console.WriteLine(">.");
             }
             else
             {
